@@ -58,7 +58,8 @@ public class AdminService {
         return UserResponse.builder()
                 .id(user.getId()).fullName(user.getFullName())
                 .cpf(user.getCpf()).email(user.getEmail())
-                .role(user.getRole().name()).createdAt(user.getCreatedAt())
+                .role(user.getRole().name()).enabled(user.isEnabled())
+                .createdAt(user.getCreatedAt())
                 .account(accountResponse).build();
     }
 }

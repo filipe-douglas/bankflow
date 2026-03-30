@@ -14,6 +14,7 @@ public class UserResponse {
     private String cpf;
     private String email;
     private String role;
+    private boolean enabled;
     private LocalDateTime createdAt;
     private AccountResponse account;
 }

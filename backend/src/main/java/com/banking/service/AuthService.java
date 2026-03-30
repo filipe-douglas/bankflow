@@ -155,7 +155,8 @@ public class AuthService {
         UserResponse userResponse = UserResponse.builder()
                 .id(user.getId()).fullName(user.getFullName())
                 .cpf(user.getCpf()).email(user.getEmail())
-                .role(user.getRole().name()).createdAt(user.getCreatedAt())
+                .role(user.getRole().name()).enabled(user.isEnabled())
+                .createdAt(user.getCreatedAt())
                 .account(accountResponse).build();
 
         return AuthResponse.builder()
