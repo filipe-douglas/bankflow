@@ -1,0 +1,136 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --gold: #f59e0b;
+    --gold-light: #fbbf24;
+    --ink-950: #080808;
+    --ink-900: #0d0d0d;
+    --ink-800: #1a1a1a;
+    --ink-700: #2a2a2a;
+    --ink-600: #3d3d3d;
+    --ink-300: #a8a8a8;
+    --ink-100: #ebebeb;
+  }
+
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    @apply bg-ink-950 text-ink-100 font-body antialiased;
+    background-image:
+      radial-gradient(ellipse at 20% 0%, rgba(245,158,11,0.04) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 100%, rgba(245,158,11,0.03) 0%, transparent 60%);
+    min-height: 100vh;
+  }
+
+  ::selection {
+    background-color: rgba(245,158,11,0.25);
+    color: #fbbf24;
+  }
+
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--ink-900); }
+  ::-webkit-scrollbar-thumb {
+    background: var(--ink-600);
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover { background: var(--gold); }
+}
+
+@layer components {
+  .glass {
+    background: rgba(26,26,26,0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .glass-gold {
+    background: rgba(245,158,11,0.06);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(245,158,11,0.15);
+  }
+
+  .btn-primary {
+    @apply relative overflow-hidden bg-gold-500 text-ink-950 font-body font-semibold
+           px-6 py-3 rounded-xl transition-all duration-200
+           hover:bg-gold-400 active:scale-[0.98]
+           disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-gold-500;
+  }
+
+  .btn-ghost {
+    @apply relative overflow-hidden bg-transparent border border-ink-600 text-ink-300
+           font-body font-medium px-6 py-3 rounded-xl transition-all duration-200
+           hover:border-ink-400 hover:text-ink-100 active:scale-[0.98]
+           disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-danger {
+    @apply relative overflow-hidden bg-red-500/10 border border-red-500/30 text-red-400
+           font-body font-medium px-6 py-3 rounded-xl transition-all duration-200
+           hover:bg-red-500/20 hover:border-red-400 active:scale-[0.98];
+  }
+
+  .input-field {
+    @apply w-full bg-ink-800 border border-ink-600 text-ink-100 font-body
+           rounded-xl px-4 py-3 outline-none transition-all duration-200
+           placeholder:text-ink-400
+           focus:border-gold-500 focus:ring-2 focus:ring-gold-500/20
+           disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .input-field.error {
+    @apply border-red-500 focus:border-red-400 focus:ring-red-500/20;
+  }
+
+  .card {
+    @apply glass rounded-2xl p-6 transition-all duration-300;
+  }
+
+  .card-hover {
+    @apply card hover:border-ink-500 hover:bg-ink-800/80;
+  }
+
+  .shimmer-bg {
+    background: linear-gradient(90deg, var(--ink-800) 25%, var(--ink-700) 50%, var(--ink-800) 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+  }
+
+  .badge-credit {
+    @apply inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium
+           bg-emerald-500/10 text-emerald-400 border border-emerald-500/20;
+  }
+
+  .badge-debit {
+    @apply inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium
+           bg-red-500/10 text-red-400 border border-red-500/20;
+  }
+
+  .badge-neutral {
+    @apply inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium
+           bg-ink-700 text-ink-300 border border-ink-600;
+  }
+
+  .divider {
+    @apply border-t border-ink-700/60 my-6;
+  }
+
+  .label {
+    @apply block text-xs font-medium text-ink-300 mb-2 tracking-wide uppercase;
+  }
+
+  .page-fade {
+    animation: fadeUp 0.4s ease both;
+  }
+
+  .stagger-1 { animation-delay: 0.05s; }
+  .stagger-2 { animation-delay: 0.10s; }
+  .stagger-3 { animation-delay: 0.15s; }
+  .stagger-4 { animation-delay: 0.20s; }
+  .stagger-5 { animation-delay: 0.25s; }
+}
